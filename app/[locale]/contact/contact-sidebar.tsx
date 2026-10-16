@@ -61,7 +61,7 @@ export function ContactSidebar({
 					<Button variant="outline" className="w-full justify-start" asChild>
 						<a href={`mailto:${email}`}>
 							<RiMailLine aria-hidden="true" />
-							{email}
+							{t("quickActions.email")}
 						</a>
 					</Button>
 				</CardContent>

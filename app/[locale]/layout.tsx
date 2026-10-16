@@ -45,7 +45,7 @@ export function generateMetadata(): Metadata {
 		title: "Pragolem Tours",
 		description: "Discover Prague with certified local guides.",
 		openGraph: {
-			images: [{ url: `${siteUrl}/pragolem-logo.avif`, alt: "Pragolem Tours" }],
+			images: [{ url: `${siteUrl}/pragolem-logo.png`, alt: "Pragolem Tours. Your local guide for walking tours in Prague." }],
 		},
 	};
 }

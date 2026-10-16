@@ -1,13 +1,16 @@
 {
   "HomePage": {
     "title": "Visite guidée de Prague en français | Pragolem Tours",
-    "subtitle": "Découvrez Prague avec des guides certifiés en français et en anglais.",
+    "subtitle": "Découvrez Prague autrement avec des guides passionnés et certifiés. Explorez la Vieille Ville, le Château de Prague et les histoires insolites de la capitale tchèque. Des visites en français, adaptées à vos envies. Plus de 130 avis 5 étoiles sur Google. Choisissez votre visite et réservez votre expérience !",
+    "altImage": "Logo de Pragolem.",
     "meta": {
-      "title": "Visites guidees à Prague Français | Pragolem Tours",
-      "description": "Visite guidée de Prague en français : 3 h avec des guides passionnés, Vieille Ville, Château et anecdotes. Plus de 130 avis 5★ sur Google. Réservez !"
+      "title": "Visite guidée de Prague en français | Pragolem Tours",
+      "description": "Découvrez Prague avec des guides passionnés. Vieille Ville, Château de Prague et visites personnalisées. Plus de 130 avis 5 étoiles sur Google. Réservez votre visite !"
     },
     "hero": {
       "badge": "Guides locaux les mieux notés",
+      "altImage": "Logo de Pragolem.",
+      "altImageGuides": "Lucas et Nathan. Guides touristiques les mieux notés pour les visites en français et en anglais à Prague",
       "primaryCta": "Réserver votre tour",
       "secondaryCta": "Voir toutes les visites",
       "ratingLabel": "Note moyenne",
@@ -198,6 +201,7 @@
     "bookingCta": "Réserver",
     "openMenu": "Ouvrir le menu",
     "menuTitle": "Menu",
+    "altImage": "Logo de Pragolem",
     "nav": {
       "tours": "Visites",
       "about": "À propos",
@@ -210,6 +214,7 @@
     "exploreTitle": "Explorer",
     "contactTitle": "Contact & Légal",
     "socialTitle": "Réseaux sociaux",
+    "altImage": "Logo de Pragolem. Votre guide local pour des visites guidées à Prague.",
     "links": {
       "tours": "Visites",
       "about": "À propos",
@@ -315,7 +320,8 @@
       "title": "Contact rapide",
       "description": "Besoin d'aide immédiate ? Utilisez l'un de ces canaux.",
       "call": "Appeler",
-      "whatsapp": "Ouvrir WhatsApp"
+      "whatsapp": "Ouvrir WhatsApp",
+      "email" : "Envoyer un email"
     },
     "social": {
       "title": "Réseaux sociaux",

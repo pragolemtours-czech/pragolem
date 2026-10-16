@@ -32,8 +32,8 @@ export function HeroSection({
 				<div className="flex justify-items-normal gap-4">
 					<div className="bg-[#123865] flex items-center justify-center w-18 h-18 rounded-full">
 						<Image
-							src="/pragolem-logo.avif"
-							alt=""
+							src="/pragolem-logo.png"
+							alt={t("hero.altImage")}
 							width={50}
 							height={50}
 							className="w-[50px] h-[50px] transition-transform duration-300 hover:scale-110 hover:-rotate-6"
@@ -60,28 +60,37 @@ export function HeroSection({
 			<div className="grid gap-3 sm:grid-cols-3 md:grid-cols-1  md:w-20">
 				<Card size="sm">
 					<CardHeader className="flex flex-col justify-center items-center ">
-						<CardTitle>{aggregateRating.ratingValue}/5<span className="text-amber-500 text-xs ms-1">★</span></CardTitle>
-						<CardDescription className="text-center leading-3.5 text-[#657d9d]">{t("hero.ratingLabel")}</CardDescription>
+						<CardTitle>
+							{aggregateRating.ratingValue}/5
+							<span className="text-amber-500 text-xs ms-1">★</span>
+						</CardTitle>
+						<CardDescription className="text-center leading-3.5 text-[#657d9d]">
+							{t("hero.ratingLabel")}
+						</CardDescription>
 					</CardHeader>
 				</Card>
 				<Card size="sm">
 					<CardHeader className="flex flex-col justify-center items-center">
 						{/* <CardTitle>{aggregateRating.reviewCount}</CardTitle> */}
 						<CardTitle className="text-center">135</CardTitle>
-						<CardDescription className="text-center leading-3.5 text-[#657d9d] ">{t("hero.googleReviewsLabel")}</CardDescription>
+						<CardDescription className="text-center leading-3.5 text-[#657d9d] ">
+							{t("hero.googleReviewsLabel")}
+						</CardDescription>
 					</CardHeader>
 				</Card>
 				<Card size="sm">
 					<CardHeader className="flex flex-col justify-center items-center">
 						<CardTitle>{tourCount}</CardTitle>
-						<CardDescription className="text-center leading-3.5 text-[#657d9d]">{t("hero.toursLabel")}</CardDescription>
+						<CardDescription className="text-center leading-3.5 text-[#657d9d]">
+							{t("hero.toursLabel")}
+						</CardDescription>
 					</CardHeader>
 				</Card>
 			</div>
 			<div className="relative w-full h-100 md:h-full">
 				<Image
 					src="/images/pragolem_guides_prague_tours.webp"
-					alt=""
+					alt={t("hero.altImageGuides")}
 					fill
 					className="object-cover md:object-contain"
 					sizes="(max-width: 768px) 100vw, 33vw"

@@ -48,7 +48,7 @@ export async function Footer({ locale }: FooterProps) {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <section className="space-y-3">
             <h3 className="flex items-center gap-2 font-semibold tracking-tight">
-              <Image src="/pragolem-logo.avif" alt="" width={20} height={20} className="size-5" aria-hidden="true" />
+              <Image src="/pragolem-logo.png" alt={t("altImage")} width={20} height={20} className="size-5" aria-hidden="true" />
               {siteConfig.attributes.siteName}
             </h3>
             <p className="text-sm text-muted-foreground">{tagline}</p>

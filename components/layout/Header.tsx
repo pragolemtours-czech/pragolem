@@ -63,8 +63,8 @@ export function Header() {
 				<Link href="/" className="inline-flex items-center gap-2">
 					<div className="bg-[#123865] flex items-center justify-center w-6 h-6 rounded-full">
 						<Image
-							src="/pragolem-logo.avif"
-							alt=""
+							src="/pragolem-logo.png"
+							alt="Pragolem Logo"
 							width={20}
 							height={20}
 							className="size-5"

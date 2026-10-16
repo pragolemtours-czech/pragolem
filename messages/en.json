@@ -1,13 +1,16 @@
 {
   "HomePage": {
-    "title": "Walking Tours in Prague",
-    "subtitle": "Discover Prague with certified local guides in English and French.",
+    "title": "Discover Prague on a Walking Tour",
+    "subtitle": "Discover Prague with passionate guides and explore the Old Town, Prague Castle, and the city's fascinating hidden stories. Join a group tour or enjoy a private tour tailored to your interests. Tours available in French and English, over 130 five-star Google reviews. Choose your tour and book your Prague experience!",
+    "altImage": "Pragolem Logo",
     "meta": {
-      "title": "Walking Tour Prague | Pragolem Tours",
-      "description": "Book a top-rated walking walking tour in Prague with certified local guides. Explore Old Town, Prague Castle, and private tour options."
+      "title": "Discover Prague on a Walking Tour | Pragolem Tours",
+      "description": "Explore Prague with passionate French and English speaking guides. Discover the Old Town and Prague Castle on private or group tours. Over 130 five-star Google reviews. Book your tour!"
     },
     "hero": {
       "badge": "Top-rated local guides",
+      "altImage": "Pragolem Logo",
+      "altImageGuides": "Lucas et Nathan. Top-rated local guides for walking tours in Prague",
       "primaryCta": "Reserve your walking tour",
       "secondaryCta": "See all tours",
       "ratingLabel": "Average rating",
@@ -209,6 +212,7 @@
   },
   "Footer": {
     "exploreTitle": "Explore",
+    "altImage": "Pragolem Logo",
     "contactTitle": "Contact & Legal",
     "socialTitle": "Social",
     "links": {
@@ -316,7 +320,8 @@
       "title": "Quick contact",
       "description": "Need immediate help? Use one of these direct channels.",
       "call": "Call now",
-      "whatsapp": "Open WhatsApp"
+      "whatsapp": "Open WhatsApp",
+      "email": "Send email"
     },
     "social": {
       "title": "Social links",
