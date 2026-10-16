@@ -14,7 +14,7 @@ export const siteConfigData: SiteConfig = {
     contact: {
       phone: "+420 605 513 399",
       whatsapp: "+420 605 513 399",
-      email: "info@pragolem.com",
+      email: "pragolemtours@gmail.com",
       preferredContact: "whatsapp",
     },
     socialLinks: [

@@ -146,21 +146,21 @@ Pour aller plus loin, rejoignez notre **free tour Vieille Ville & Quartier Juif*
   },
   // [PLACEHOLDER] English blog post 2
   {
-    id: "blog-free-vs-private-en",
+    id: "blog-walking-vs-private-en",
     slug: {
-      en: "free-tour-vs-private-tour-prague",
-      fr: "free-tour-ou-visite-privee-prague",
+      en: "walking-tour-vs-private-tour-prague",
+      fr: "visite-guidee-vs-visite-privee-prague",
     },
     locale: "en",
     attributes: {
-      title: "Free Tour vs Private Tour in Prague: Which Should You Choose?",
+      title: "Walking Tour vs Private Tour in Prague: Which Should You Choose?",
       excerpt:
-        "Not sure whether to book a free walking tour or a private guide in Prague? Here is a practical comparison based on budget, depth, and flexibility.",
-      content: `# Free Tour vs Private Tour in Prague: Which Should You Choose?
+        "Not sure whether to book a  walking tour or a private guide in Prague? Here is a practical comparison based on budget, depth, and flexibility.",
+      content: `# Walking Tour vs Private Tour in Prague: Which Should You Choose?
 
 If you are planning your first days in Prague, this decision matters. Both options are valuable, but they serve different travel goals.
 
-## Choose a free tour if you want...
+## Choose a walking tour if you want...
 - A strong city introduction at flexible cost
 - A social group atmosphere
 - A structured route covering major highlights

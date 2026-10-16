@@ -14,6 +14,7 @@ import { HeroSection } from "./hero-section";
 import { HowItWorksSection } from "./how-it-works-section";
 import { ReviewsSection } from "./reviews-section";
 import { ToursSection } from "./tours-section";
+import { JsonLd } from "@/components/json-ld";
 
 export async function generateMetadata({
 	params,
@@ -99,94 +100,58 @@ export default async function HomePage({
 		{ title: t("how.step3.title"), body: t("how.step3.body") },
 	];
 
-	const organizationSchema = {
-		"@context": "https://schema.org",
-		"@type": "Organization",
-		name: siteConfig.attributes.siteName,
-		url: `${getSiteUrl()}/${localeCode}`,
-		description: t("meta.description"),
-		telephone: siteConfig.attributes.contact.phone,
-		email: siteConfig.attributes.contact.email,
-		sameAs: siteConfig.attributes.socialLinks.map((social) => social.url),
-		inLanguage: localeCode,
-		areaServed: "Prague, Czech Republic",
-		logo: `${getSiteUrl()}/pragolem-logo.avif`,
-	};
+	const siteUrl = getSiteUrl();
+	const organizationId = `${siteUrl}/#organization`;
 
-	// const touristAttractionSchema = {
-	// 	"@context": "https://schema.org",
-	// 	"@type": "TouristAttraction",
-	// 	name: `${siteConfig.attributes.siteName} Prague Walking Tours`,
-	// 	description: t("meta.description"),
-	// 	url: `${getSiteUrl()}/${localeCode}`,
-	// 	inLanguage: localeCode,
-	// 	isAccessibleForFree: true,
-	// 	availableLanguage: ["en", "fr", "es"],
-	// 	aggregateRating:
-	// 		aggregateRating.reviewCount > 0
-	// 			? {
-	// 					"@type": "AggregateRating",
-	// 					ratingValue: aggregateRating.ratingValue,
-	// 					reviewCount: aggregateRating.reviewCount,
-	// 				}
-	// 			: undefined,
-	// };
-	const localBusinessSchema = {
+	const jsonLd = {
 		"@context": "https://schema.org",
-		"@type": "TravelAgency",
-		name: `${siteConfig.attributes.siteName} Prague Walking Tours`,
-		description: t("meta.description"),
-		url: `${getSiteUrl()}/${localeCode}`,
-		inLanguage: localeCode,
-		availableLanguage: ["en", "fr", "es"],
-		priceRange: "€€", // ajoute une fourchette réelle si connue
-		areaServed: {
-			"@type": "City",
-			name: "Prague",
-		},
-		aggregateRating:
-			aggregateRating.reviewCount > 0
-				? {
+		"@graph": [
+			{
+				"@type": "TravelAgency",
+				"@id": organizationId,
+				name: siteConfig.attributes.siteName,
+				url: `${siteUrl}/${localeCode}`,
+				description: t("meta.description"),
+				logo: `${siteUrl}/pragolem-logo.png`,
+				telephone: siteConfig.attributes.contact.phone,
+				email: siteConfig.attributes.contact.email,
+				priceRange: "dès 20€",
+				areaServed: { "@type": "City", name: "Prague" },
+				sameAs: siteConfig.attributes.socialLinks.map((social) => social.url),
+				contactPoint: {
+					"@type": "ContactPoint",
+					contactType: "customer service",
+					email: siteConfig.attributes.contact.email,
+					availableLanguage: ["French", "English"],
+				},
+				...(aggregateRating.reviewCount > 0 && {
+					aggregateRating: {
 						"@type": "AggregateRating",
 						ratingValue: aggregateRating.ratingValue,
 						reviewCount: aggregateRating.reviewCount,
-					}
-				: undefined,
-	};
-
-
-	const faqSchema = {
-		"@context": "https://schema.org",
-		"@type": "FAQPage",
-		inLanguage: localeCode,
-		mainEntity: featuredFaqItems.map((faq) => ({
-			"@type": "Question",
-			name: faq.attributes.question,
-			acceptedAnswer: {
-				"@type": "Answer",
-				text: faq.attributes.answer,
+					},
+				}),
 			},
-		})),
+			{
+				"@type": "FAQPage",
+				"@id": `${siteUrl}/${localeCode}#faq`,
+				inLanguage: localeCode,
+				about: { "@id": organizationId },
+				mainEntity: featuredFaqItems.map((faq) => ({
+					"@type": "Question",
+					name: faq.attributes.question,
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: faq.attributes.answer,
+					},
+				})),
+			},
+		],
 	};
-  
 
 	return (
 		<>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-			/>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify(localBusinessSchema),
-				}}
-			/>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-			/>
-
+			<JsonLd data={jsonLd} />
 			<main
 				id="main-content"
 				className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-10 sm:px-6 sm:py-12"

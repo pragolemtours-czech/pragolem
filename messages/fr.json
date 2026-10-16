@@ -1,10 +1,10 @@
 {
   "HomePage": {
-    "title": "Visites guidees à Prague | Pragolem Tours",
+    "title": "Visite guidée de Prague en français | Pragolem Tours",
     "subtitle": "Découvrez Prague avec des guides certifiés en français et en anglais.",
     "meta": {
       "title": "Visites guidees à Prague Français | Pragolem Tours",
-      "description": "Réservez une visite guidée gratuite à Prague avec des guides certifiés. Vieille Ville, Château de Prague et visites privées sur mesure."
+      "description": "Visite guidée de Prague en français : 3 h avec des guides passionnés, Vieille Ville, Château et anecdotes. Plus de 130 avis 5★ sur Google. Réservez !"
     },
     "hero": {
       "badge": "Guides locaux les mieux notés",
@@ -555,8 +555,8 @@
         "body": "Les reservations sont soumises a disponibilite et confirmation par notre equipe. Une demande de reservation ne garantit pas une place confirmee tant que vous n avez pas recu un email de confirmation. Nous nous reservons le droit de modifier ou d annuler des visites pour des raisons meteorologiques, de securite ou operationnelles. Dans ce cas, une date alternative ou un remboursement complet vous sera propose."
       },
       "freeModel": {
-        "title": "3. Modele de visite gratuite",
-        "body": "Nos free tours fonctionnent selon le principe du prix libre. Il n y a pas de tarif fixe et aucune obligation de paiement. Les participants decident de leur contribution a la fin de la visite en fonction de leur experience et de leur budget. Ce modele repose sur la confiance et le respect mutuel entre guides et visiteurs."
+        "title": "3. Modele de visite",
+        "body": "Nos  tours fonctionnent selon le principe du prix libre. Il n y a pas de tarif fixe et aucune obligation de paiement. Les participants decident de leur contribution a la fin de la visite en fonction de leur experience et de leur budget. Ce modele repose sur la confiance et le respect mutuel entre guides et visiteurs."
       },
       "privateTours": {
         "title": "4. Visites privees et tarification",

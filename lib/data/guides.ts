@@ -16,7 +16,6 @@ export const guidesData: Guide[] = [
       role: "Co-founder & Certified Guide",
       languages: ["French", "English"],
       shortBio:
-        // "Lucas is a Colombian-born architect educated in Paris who has lived in Prague for more than a decade. He leads French, English and Spanish tours with a strong focus on making Czech history accessible, vivid and personally relevant for every group.",
         "Lucas is a Colombian-born architect educated in Paris who has lived in Prague for more than a decade. An avid traveler, he can give a clear-sighted view on how the city has changed, on top of the history, the myths, the legends. Witty and loquacious (he speaks French, English, Spanish and Czech), you get more than you expect with Lucas.",
       fullBio: `Lucas grew up in Colombia and later trained as an architect in Paris, where he developed a long-term fascination with European urban history. More than ten years ago, he moved to Prague and quickly realized the city offered the ideal combination of layered architecture, political complexity, and daily street life that never stops surprising people. He eventually became a certified guide and co-founded Pragolem with a clear goal: share Prague with rigor, warmth, and genuine curiosity.
 
