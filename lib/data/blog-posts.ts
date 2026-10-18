@@ -146,10 +146,10 @@ Pour aller plus loin, rejoignez notre **free tour Vieille Ville & Quartier Juif*
   },
   // [PLACEHOLDER] English blog post 2
   {
-    id: "blog-walking-vs-private-en",
+    id: "blog-free-vs-private-en",
     slug: {
-      en: "walking-tour-vs-private-tour-prague",
-      fr: "visite-guidee-vs-visite-privee-prague",
+      en: "free-tour-vs-private-tour-prague",
+      fr: "free-guidee-vs-visite-privee-prague",
     },
     locale: "en",
     attributes: {
