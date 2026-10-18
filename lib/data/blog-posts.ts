@@ -7,7 +7,7 @@ export const blogPostsData: BlogPost[] = [
     id: "blog-old-town-facts-en",
     slug: {
       en: "10-things-old-town-square-prague",
-      fr: "10-choses-place-vieille-ville-prague",
+      fr: "10-things-old-town-square-prague",
     },
     locale: "en",
     attributes: {
@@ -50,7 +50,7 @@ A strong free walking tour in Prague connects monuments to lived history, helpin
 
 Want to go deeper? Join our **Old Town & Jewish Quarter** route and continue with Prague's layered story on foot.`,
       featuredImage: {
-        url: "/images/placeholders/blog-old-town-facts.jpg",
+        url: "/images/blog/prague-vue.webp",
         alt: "Prague Old Town Square at sunrise",
       },
       author: "Lucas",
@@ -60,7 +60,7 @@ Want to go deeper? Join our **Old Town & Jewish Quarter** route and continue wit
         metaTitle: "10 Things You Didn't Know About Prague's Old Town Square | Pragolem",
         metaDescription:
           "Discover hidden stories behind Prague Old Town Square and see why a guided walking tour reveals far more than the classic postcard view.",
-        ogImage: "/images/placeholders/og-blog-old-town-facts.jpg",
+        ogImage: "/images/blog/prague-vue.webp",
       },
     },
     relationships: {
@@ -74,7 +74,7 @@ Want to go deeper? Join our **Old Town & Jewish Quarter** route and continue wit
     id: "blog-old-town-facts-fr",
     slug: {
       en: "10-things-old-town-square-prague",
-      fr: "10-choses-place-vieille-ville-prague",
+      fr: "10-things-old-town-square-prague",
     },
     locale: "fr",
     attributes: {
@@ -117,7 +117,7 @@ Un guide replace les monuments dans une histoire cohérente, vivante et mémorab
 
 Pour aller plus loin, rejoignez notre **free tour Vieille Ville & Quartier Juif** et découvrez Prague avec un vrai fil conducteur historique.`,
       featuredImage: {
-        url: "/images/placeholders/blog-old-town-facts.jpg",
+        url: "/images/blog/prague-vue.webp",
         alt: "Place de la Vieille-Ville à Prague tôt le matin",
       },
       author: "Lucas",
@@ -128,7 +128,7 @@ Pour aller plus loin, rejoignez notre **free tour Vieille Ville & Quartier Juif*
           "10 Choses Que Vous Ne Saviez Pas Sur la Place de la Vieille-Ville de Prague | Pragolem",
         metaDescription:
           "Explorez les coulisses historiques de la place de la Vieille-Ville et comprenez Prague avec une approche guidée claire et passionnante.",
-        ogImage: "/images/placeholders/og-blog-old-town-facts-fr.jpg",
+        ogImage: "/images/blog/prague-vue.webp",
       },
     },
     relationships: {
@@ -149,7 +149,7 @@ Pour aller plus loin, rejoignez notre **free tour Vieille Ville & Quartier Juif*
     id: "blog-free-vs-private-en",
     slug: {
       en: "free-tour-vs-private-tour-prague",
-      fr: "free-guidee-vs-visite-privee-prague",
+      fr: "free-tour-vs-private-tour-prague",
     },
     locale: "en",
     attributes: {
@@ -187,7 +187,7 @@ If you are in Prague for 2-3 days, start with a free tour to build context. Then
 
 At Pragolem, many visitors combine both: **Old Town Free Tour** first, then a **Private Guided Tour** for tailored depth.`,
       featuredImage: {
-        url: "/images/placeholders/blog-free-vs-private.jpg",
+        url: "/images/blog/pragolem-visite.webp",
         alt: "Small private group and larger public walking tour in Prague",
       },
       author: "Nathan",
@@ -197,7 +197,7 @@ At Pragolem, many visitors combine both: **Old Town Free Tour** first, then a **
         metaTitle: "Free Tour vs Private Tour in Prague: Which Should You Choose? | Pragolem",
         metaDescription:
           "Compare free walking tours and private guided tours in Prague. Learn which format fits your budget, schedule, and travel goals.",
-        ogImage: "/images/placeholders/og-blog-free-vs-private.jpg",
+        ogImage: "/images/blog/pragolem-visite.webp",
       },
     },
     relationships: {
@@ -214,7 +214,7 @@ At Pragolem, many visitors combine both: **Old Town Free Tour** first, then a **
     id: "blog-free-vs-private-fr",
     slug: {
       en: "free-tour-vs-private-tour-prague",
-      fr: "free-tour-ou-visite-privee-prague",
+      fr: "free-tour-vs-private-tour-prague",
     },
     locale: "fr",
     attributes: {
@@ -252,7 +252,7 @@ Pour un premier séjour de 2 à 3 jours, commencez par un free tour pour poser l
 
 Chez Pragolem, beaucoup de voyageurs combinent les deux: **free tour Vieille Ville** puis **visite privée sur mesure**.`,
       featuredImage: {
-        url: "/images/placeholders/blog-free-vs-private.jpg",
+        url: "/images/blog/pragolem-visite.webp",
         alt: "Comparaison entre visite de groupe et visite privée à Prague",
       },
       author: "Lucas",
@@ -262,7 +262,7 @@ Chez Pragolem, beaucoup de voyageurs combinent les deux: **free tour Vieille Vil
         metaTitle: "Free Tour ou Visite Privée à Prague : Que Choisir ? | Pragolem",
         metaDescription:
           "Comparez free tour et visite privée à Prague pour choisir le format le plus adapté à votre budget, votre temps et vos objectifs.",
-        ogImage: "/images/placeholders/og-blog-free-vs-private-fr.jpg",
+        ogImage: "/images/blog/pragolem-visite.webp",
       },
     },
     relationships: {
@@ -284,7 +284,7 @@ Chez Pragolem, beaucoup de voyageurs combinent les deux: **free tour Vieille Vil
     id: "blog-french-guide-prague-en",
     slug: {
       en: "french-speakers-guide-to-prague",
-      fr: "guide-de-prague-pour-les-francophones",
+      fr: "french-speakers-guide-to-prague",
     },
     locale: "en",
     attributes: {
@@ -316,7 +316,7 @@ If your priority is depth, a French-speaking guide in Prague helps bridge local 
 
 For many travelers, the best formula is simple: start with a **free tour in French in Prague**, then add one private or thematic experience for deeper exploration.`,
       featuredImage: {
-        url: "/images/placeholders/blog-french-guide-prague.jpg",
+        url: "/images/blog/guide-francais-pragolem.webp",
         alt: "Francophone travelers overlooking Prague Castle",
       },
       author: "Lucas",
@@ -326,7 +326,7 @@ For many travelers, the best formula is simple: start with a **free tour in Fren
         metaTitle: "A French Speaker's Guide to Prague | Pragolem",
         metaDescription:
           "Planning Prague as a francophone traveler? Discover practical tips, cultural context, and the best French-speaking tour options in Prague.",
-        ogImage: "/images/placeholders/og-blog-french-guide-prague.jpg",
+        ogImage: "/images/blog/guide-francais-pragolem.webp",
       },
     },
     relationships: {
@@ -343,7 +343,7 @@ For many travelers, the best formula is simple: start with a **free tour in Fren
     id: "blog-french-guide-prague-fr",
     slug: {
       en: "french-speakers-guide-to-prague",
-      fr: "guide-de-prague-pour-les-francophones",
+      fr: "french-speakers-guide-to-prague",
     },
     locale: "fr",
     attributes: {
@@ -375,7 +375,7 @@ Un guide francophone permet de gagner du temps, d'éviter les explications appro
 
 Pour un séjour équilibré, l'idéal est souvent de commencer par un **free tour français à Prague**, puis d'ajouter une visite privée si vous souhaitez approfondir un thème précis.`,
       featuredImage: {
-        url: "/images/placeholders/blog-french-guide-prague.jpg",
+        url: "/images/blog/guide-francais-pragolem.webp",
         alt: "Vue de Prague pour les voyageurs francophones",
       },
       author: "Lucas",
@@ -385,7 +385,7 @@ Pour un séjour équilibré, l'idéal est souvent de commencer par un **free tou
         metaTitle: "Guide de Prague pour les Francophones | Pragolem",
         metaDescription:
           "Préparez votre voyage à Prague avec des conseils concrets pour francophones, des repères historiques et les meilleures options de visite guidée en français.",
-        ogImage: "/images/placeholders/og-blog-french-guide-prague-fr.jpg",
+        ogImage: "/images/blog/guide-francais-pragolem.webp",
       },
     },
     relationships: {
