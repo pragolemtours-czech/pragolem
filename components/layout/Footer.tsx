@@ -70,16 +70,6 @@ export async function Footer({ locale }: FooterProps) {
           <section className="space-y-3">
             <h3 className="font-semibold tracking-tight">{t("contactTitle")}</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              {/* <li>
-                <a href={`tel:${contact.phone.replace(/\s+/g, "")}`} className="hover:text-foreground">
-                  {contact.phone}
-                </a>
-              </li> */}
-              <li>
-                <a href={`mailto:${contact.email}`} className="hover:text-foreground">
-                  {contact.email}
-                </a>
-              </li>
               <li>
                 <a href={`https://wa.me/${contact.whatsapp.replace(/[^\d]/g, "")}`} className="hover:text-foreground">
                   WhatsApp
