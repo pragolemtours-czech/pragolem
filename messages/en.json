@@ -248,6 +248,7 @@
       "privateTourCta": "Request a private tour",
       "contactTitle": "Need a quick answer?"
     },
+    "contactMail": "Send a mail",    
     "form": {
       "tourLabel": "Tour selection",
       "errorToast": "An error occurred. Please try again.",
@@ -283,7 +284,8 @@
       "emailLabel": "Email",
       "emailPlaceholder": "you@example.com",
       "phoneLabel": "Phone",
-      "phonePlaceholder": "+420 ...",
+      "phonePlaceholder": "6 12 34 56 78",
+      "phoneCountryLabel": "Country code",
       "specialRequestsLabel": "Special requests",
       "specialRequestsPlaceholder": "Tell us anything we should know before the tour.",
       "termsLabel": "I accept the booking terms and understand this is a request pending confirmation.",
@@ -300,6 +302,7 @@
         "requiredFullName": "Please enter your full name.",
         "fullNameTooShort": "Please provide at least 2 characters for your name.",
         "requiredPhone": "Please select a phone number.",
+        "invalidPhone": "Please enter a valid phone number for the selected country.",
         "requiredEmail": "Please enter your email address.",
         "invalidEmail": "Please enter a valid email address.",
         "termsRequired": "You must accept the terms before submitting."

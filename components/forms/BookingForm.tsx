@@ -1,8 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
+import {
+	getCountries,
+	getCountryCallingCode,
+	isValidPhoneNumber,
+	parsePhoneNumberFromString,
+	type CountryCode,
+} from "libphonenumber-js/min";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -23,14 +30,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-// export interface BookingTourOption {
-// 	id: string;
-// 	slug: string;
-// 	title: string;
-// 	valueTime: string ;
-// 	labelTimeKey: string ;
-// 	priceType: "free" | "paid";
-// }
 export interface TimeSlotOption {
 	valueTime: string;
 	labelTimeKey: string;
@@ -42,7 +41,7 @@ export interface BookingTourOption {
 	title: string;
 	timeSlots: TimeSlotOption[]; // plusieurs créneaux possibles
 	priceType: "free" | "paid" | "pwyw";
-	isPrivate: boolean; 
+	isPrivate: boolean;
 }
 
 interface BookingFormValues {
@@ -53,6 +52,7 @@ interface BookingFormValues {
 	language: string;
 	fullName: string;
 	email: string;
+	phoneCountry: string;
 	phone: string;
 	specialRequests: string;
 	termsAccepted: boolean;
@@ -75,6 +75,58 @@ const LANGUAGE_OPTIONS = [
 	{ value: "fr", labelKey: "languageOptions.fr" },
 	{ value: "es", labelKey: "languageOptions.es" },
 ] as const;
+
+/** Countries shown first in the country-code selector. */
+const PINNED_PHONE_COUNTRIES: CountryCode[] = [
+	"FR",
+	"GB",
+	"US",
+	"CZ",
+	"ES",
+	"CA",
+	"BE",
+	"CH",
+	"DE",
+	"IT",
+	"NL",
+	"CO",
+];
+
+interface PhoneCountryOption {
+	value: CountryCode;
+	name: string;
+	callingCode: string;
+}
+
+/**
+ * Picks the default phone country from the page language.
+ */
+function getDefaultPhoneCountry(language: "en" | "fr"): CountryCode {
+	return language === "fr" ? "FR" : "GB";
+}
+
+/**
+ * Builds the country-code options with localized country names.
+ * Frequent countries come first, the rest is sorted alphabetically.
+ */
+function buildPhoneCountryOptions(locale: string): PhoneCountryOption[] {
+	const regionNames = new Intl.DisplayNames([locale], { type: "region" });
+	const options: PhoneCountryOption[] = getCountries().map((code) => ({
+		value: code,
+		name: regionNames.of(code) ?? code,
+		callingCode: getCountryCallingCode(code),
+	}));
+
+	const pinned = PINNED_PHONE_COUNTRIES.map((code) =>
+		options.find((option) => option.value === code),
+	).filter((option): option is PhoneCountryOption => Boolean(option));
+
+	const others = options
+		.filter((option) => !PINNED_PHONE_COUNTRIES.includes(option.value))
+		.sort((left, right) => left.name.localeCompare(right.name, locale));
+
+	return [...pinned, ...others];
+}
 
 /**
  * Returns today's date in `YYYY-MM-DD` format based on the visitor's local timezone.
@@ -100,6 +152,7 @@ function createInitialBookingValues(
 		language: defaultLanguage,
 		fullName: "",
 		email: "",
+		phoneCountry: getDefaultPhoneCountry(defaultLanguage),
 		phone: "",
 		specialRequests: "",
 		termsAccepted: false,
@@ -108,7 +161,7 @@ function createInitialBookingValues(
 
 /**
  * Validates booking form values and returns a localized error object keyed by field name.
- * The validation includes required fields, email format, and a strict past-date check.
+ * The validation includes required fields, email and phone format, and a strict past-date check.
  */
 function validateBookingValues(
 	values: BookingFormValues,
@@ -156,6 +209,10 @@ function validateBookingValues(
 
 	if (!normalizedPhone) {
 		errors.phone = t("validation.requiredPhone");
+	} else if (
+		!isValidPhoneNumber(normalizedPhone, values.phoneCountry as CountryCode)
+	) {
+		errors.phone = t("validation.invalidPhone");
 	}
 
 	if (!values.termsAccepted) {
@@ -177,6 +234,11 @@ export function BookingForm({
 	defaultLanguage: "en" | "fr";
 }) {
 	const t = useTranslations("BookingPage.form");
+	const locale = useLocale();
+	const phoneCountryOptions = useMemo(
+		() => buildPhoneCountryOptions(locale),
+		[locale],
+	);
 	const todayDateString = useMemo(() => getTodayDateString(), []);
 	const [values, setValues] = useState<BookingFormValues>(() =>
 		createInitialBookingValues(defaultLanguage),
@@ -203,41 +265,6 @@ export function BookingForm({
 		});
 	};
 
-	/**
-	 * Validates the form, logs a normalized payload, and shows a success toast when valid.
-	 */
-	// const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-	//   event.preventDefault();
-	//   const nextErrors = validateBookingValues(values, todayDateString, t);
-
-	//   if (Object.keys(nextErrors).length > 0) {
-	//     setErrors(nextErrors);
-	//     return;
-	//   }
-
-	//   setIsSubmitting(true);
-
-	//   const payload = {
-	//     tourSlug: values.tourSlug,
-	//     date: values.date,
-	//     timeSlot: values.timeSlot,
-	//     participants: Number(values.participants),
-	//     language: values.language,
-	//     fullName: values.fullName.trim(),
-	//     email: values.email.trim(),
-	//     phone: values.phone.trim() || null,
-	//     specialRequests: values.specialRequests.trim() || null,
-	//     termsAccepted: values.termsAccepted,
-	//     submittedAt: new Date().toISOString(),
-	//   };
-
-	//   console.info("[BookingForm] Submitted booking payload:", payload);
-	//   // TODO: Send this payload to Strapi and trigger booking confirmation emails/WhatsApp messages.
-	//   toast.success(t("successToast"));
-	//   setValues(createInitialBookingValues(defaultLanguage));
-	//   setErrors({});
-	//   setIsSubmitting(false);
-	// };
 	const selectedTour = tourOptions.find(
 		(tour) => tour.slug === values.tourSlug,
 	);
@@ -257,6 +284,11 @@ export function BookingForm({
 
 		setIsSubmitting(true);
 
+		const parsedPhone = parsePhoneNumberFromString(
+			values.phone.trim(),
+			values.phoneCountry as CountryCode,
+		);
+
 		const payload = {
 			tourSlug: values.tourSlug,
 			date: values.date,
@@ -265,7 +297,7 @@ export function BookingForm({
 			language: values.language,
 			fullName: values.fullName.trim(),
 			email: values.email.trim(),
-			phone: values.phone.trim() || null,
+			phone: parsedPhone?.number ?? values.phone.trim(),
 			specialRequests: values.specialRequests.trim() || null,
 			termsAccepted: values.termsAccepted,
 			submittedAt: new Date().toISOString(),
@@ -399,42 +431,6 @@ export function BookingForm({
 				</div>
 
 				<div className="grid gap-4 sm:grid-cols-2">
-					{/* <Field>
-						<FieldLabel htmlFor="booking-participants">
-							{t("participantsLabel")}
-						</FieldLabel>
-						<Select
-							value={values.participants}
-							onValueChange={(value) => updateField("participants", value)}
-						>
-							<SelectTrigger
-								id="booking-participants"
-								aria-invalid={Boolean(errors.participants)}
-							>
-								<SelectValue placeholder={t("participantsPlaceholder")} />
-							</SelectTrigger>
-							<SelectContent>
-								{PARTICIPANT_OPTIONS.map((count) => (
-									<SelectItem key={count} value={String(count)}>
-										{t("participantsCount", { count })}
-									</SelectItem>
-								))}
-							</SelectContent>
-						</Select>
-						<FieldDescription>
-							{t.rich("participantsPrivateNote", {
-								contactLink: (chunks) => (
-									<Link
-										href="/contact"
-										className="underline underline-offset-4"
-									>
-										{chunks}
-									</Link>
-								),
-							})}
-						</FieldDescription>
-						<FieldError>{errors.participants}</FieldError>
-					</Field> */}
 					<Field>
 						<FieldLabel htmlFor="booking-participants">
 							{t("participantsLabel")}
@@ -528,16 +524,51 @@ export function BookingForm({
 
 					<Field>
 						<FieldLabel htmlFor="booking-phone">{t("phoneLabel")}</FieldLabel>
-						<Input
-							id="booking-phone"
-							name="phone"
-							type="tel"
-							autoComplete="tel"
-							placeholder={t("phonePlaceholder")}
-							value={values.phone}
-							onChange={(event) => updateField("phone", event.target.value)}
-							aria-invalid={Boolean(errors.phone)}
-						/>
+						<div className="flex gap-2">
+							<Select
+								value={values.phoneCountry}
+								onValueChange={(value) => {
+									updateField("phoneCountry", value);
+									setErrors((previousErrors) => {
+										if (!previousErrors.phone) {
+											return previousErrors;
+										}
+										const nextErrors = { ...previousErrors };
+										delete nextErrors.phone;
+										return nextErrors;
+									});
+								}}
+							>
+								<SelectTrigger
+									id="booking-phone-country"
+									className="w-28 shrink-0"
+									aria-label={t("phoneCountryLabel")}
+								>
+									<SelectValue>
+										{values.phoneCountry} +
+										{getCountryCallingCode(values.phoneCountry as CountryCode)}
+									</SelectValue>
+								</SelectTrigger>
+								<SelectContent>
+									{phoneCountryOptions.map((option) => (
+										<SelectItem key={option.value} value={option.value}>
+											{option.name} (+{option.callingCode})
+										</SelectItem>
+									))}
+								</SelectContent>
+							</Select>
+							<Input
+								id="booking-phone"
+								name="phone"
+								type="tel"
+								inputMode="tel"
+								autoComplete="tel"
+								placeholder={t("phonePlaceholder")}
+								value={values.phone}
+								onChange={(event) => updateField("phone", event.target.value)}
+								aria-invalid={Boolean(errors.phone)}
+							/>
+						</div>
 						<FieldError>{errors.phone}</FieldError>
 					</Field>
 				</div>

@@ -248,6 +248,7 @@
       "privateTourCta": "Demander une visite privée",
       "contactTitle": "Besoin d'une réponse rapide ?"
     },
+    "contactMail": "Envoyer un email",
     "form": {
       "errorToast": "Une erreur est survenue. Merci de réessayer.",
       "tourLabel": "Choix de la visite",
@@ -283,7 +284,7 @@
       "emailLabel": "Email",
       "emailPlaceholder": "vous@exemple.com",
       "phoneLabel": "Téléphone",
-      "phonePlaceholder": "+420 ...",
+      "phonePlaceholder": "6 12 34 56 78",
       "specialRequestsLabel": "Demandes particulières",
       "specialRequestsPlaceholder": "Indiquez les informations utiles avant la visite.",
       "termsLabel": "J'accepte les conditions de réservation et je comprends que la demande doit être confirmée.",
@@ -302,6 +303,7 @@
         "requiredEmail": "Veuillez saisir votre adresse email.",
         "invalidEmail": "Veuillez saisir une adresse email valide.",
         "requiredPhone": "Veuillez sélectionner un téléphone.",
+        "invalidPhone": "Veuillez saisir un numéro de téléphone valide pour le pays sélectionné.",
         "termsRequired": "Vous devez accepter les conditions avant l'envoi."
       }
     }
