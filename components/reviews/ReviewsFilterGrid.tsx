@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -126,17 +127,18 @@ export function ReviewsFilterGrid({
     () => getTourOptions(items, selectedLanguage, t),
     [items, selectedLanguage, t],
   );
-  const filteredReviews = useMemo(
-    () => getFilteredReviews(items, selectedLanguage, selectedTour),
-    [items, selectedLanguage, selectedTour],
-  );
 
-  useEffect(() => {
-    const isCurrentTourOptionValid = tourOptions.some((option) => option.value === selectedTour);
-    if (!isCurrentTourOptionValid) {
-      setSelectedTour(ALL_TOUR_FILTER);
-    }
-  }, [selectedTour, tourOptions]);
+  // The tour actually applied: falls back to "all" when the stored choice
+  // is not available for the selected language. Derived during render,
+  // so no effect and no extra render pass is needed.
+  const activeTour = tourOptions.some((option) => option.value === selectedTour)
+    ? selectedTour
+    : ALL_TOUR_FILTER;
+
+  const filteredReviews = useMemo(
+    () => getFilteredReviews(items, selectedLanguage, activeTour),
+    [items, selectedLanguage, activeTour],
+  );
 
   return (
     <div className="space-y-5">
@@ -163,7 +165,7 @@ export function ReviewsFilterGrid({
           <label className="text-xs font-medium" htmlFor="reviews-tour-filter">
             {t("filters.tourLabel")}
           </label>
-          <Select value={selectedTour} onValueChange={setSelectedTour}>
+          <Select value={activeTour} onValueChange={setSelectedTour}>
             <SelectTrigger id="reviews-tour-filter">
               <SelectValue placeholder={t("filters.allTours")} />
             </SelectTrigger>

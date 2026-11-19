@@ -8,7 +8,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import type { Tour } from "@/lib/types/tour";
 import { AnimatedTitle } from "@/components/ui/animatedtitle";
 
 interface HeroSectionProps {

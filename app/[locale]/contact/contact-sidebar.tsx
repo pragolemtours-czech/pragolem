@@ -24,7 +24,6 @@ import type { TourMeetingPoint } from "@/lib/types/tour";
 export function ContactSidebar({
 	t,
 	phoneHref,
-	phoneDisplay,
 	whatsappHref,
 	email,
 	socialLinks,

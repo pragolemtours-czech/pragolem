@@ -9,8 +9,14 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+type GoogleReview = {
+	rating: number;
+	text?: { text?: string; languageCode?: string };
+	authorAttribution?: { displayName?: string };
+};
+
 type GoogleReviewsProps = {
-	t: (key: string, values?: Record<string, any>) => string;
+	t: (key: string, values?: Record<string, string | number>) => string;
 };
 
 async function GoogleReviews({ t }: GoogleReviewsProps) {
@@ -40,7 +46,7 @@ async function GoogleReviews({ t }: GoogleReviewsProps) {
 			</div>
 
 			<div className="grid gap-4 md:grid-cols-3">
-				{place.reviews?.map((r: any, i: number) => (
+				{place.reviews?.map((r: GoogleReview, i: number) => (
 					<Card key={i} size="sm" className="transition-shadow hover:shadow-md">
 						<CardHeader>
 							<CardTitle>{r.authorAttribution?.displayName}</CardTitle>
