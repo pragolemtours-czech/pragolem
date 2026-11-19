@@ -207,11 +207,11 @@ function validateBookingValues(
 		errors.email = t("validation.invalidEmail");
 	}
 
-	if (!normalizedPhone) {
-		errors.phone = t("validation.requiredPhone");
-	} else if (
+	if (
+		normalizedPhone &&
 		!isValidPhoneNumber(normalizedPhone, values.phoneCountry as CountryCode)
 	) {
+		!isValidPhoneNumber(normalizedPhone, values.phoneCountry as CountryCode);
 		errors.phone = t("validation.invalidPhone");
 	}
 
@@ -235,10 +235,11 @@ export function BookingForm({
 }) {
 	const t = useTranslations("BookingPage.form");
 	const locale = useLocale();
-	const phoneCountryOptions = useMemo(
-		() => buildPhoneCountryOptions(locale),
-		[locale],
-	);
+	// const phoneCountryOptions = useMemo(
+	// 	() => buildPhoneCountryOptions(locale),
+	// 	[locale],
+	// );
+	const phoneCountryOptions = useMemo(() => buildPhoneCountryOptions("en"), []);
 	const todayDateString = useMemo(() => getTodayDateString(), []);
 	const [values, setValues] = useState<BookingFormValues>(() =>
 		createInitialBookingValues(defaultLanguage),
@@ -283,11 +284,13 @@ export function BookingForm({
 		}
 
 		setIsSubmitting(true);
-
-		const parsedPhone = parsePhoneNumberFromString(
-			values.phone.trim(),
-			values.phoneCountry as CountryCode,
-		);
+		const trimmedPhone = values.phone.trim();
+		const parsedPhone = trimmedPhone
+			? parsePhoneNumberFromString(
+					trimmedPhone,
+					values.phoneCountry as CountryCode,
+				)
+			: undefined;
 
 		const payload = {
 			tourSlug: values.tourSlug,
@@ -297,7 +300,7 @@ export function BookingForm({
 			language: values.language,
 			fullName: values.fullName.trim(),
 			email: values.email.trim(),
-			phone: parsedPhone?.number ?? values.phone.trim(),
+			phone: trimmedPhone ? (parsedPhone?.number ?? trimmedPhone) : null,
 			specialRequests: values.specialRequests.trim() || null,
 			termsAccepted: values.termsAccepted,
 			submittedAt: new Date().toISOString(),
@@ -523,7 +526,10 @@ export function BookingForm({
 					</Field>
 
 					<Field>
-						<FieldLabel htmlFor="booking-phone">{t("phoneLabel")}</FieldLabel>
+						<FieldLabel htmlFor="booking-phone">
+							{t("phoneLabel")}
+							<span className="text-muted-foreground"> ({t("optional")})</span>
+						</FieldLabel>
 						<div className="flex gap-2">
 							<Select
 								value={values.phoneCountry}

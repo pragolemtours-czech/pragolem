@@ -28,7 +28,7 @@
         "subtitle": "Réservation rapide et points de rendez-vous clairs."
       },
       "guides": {
-        "title": "Rencontrez nos guides",
+        "title": "Rencontrez nos guides francophones",
         "subtitle": "Pragolem est porté par des guides certifiés, passionnés d'histoire et de pédagogie."
       },
       "reviews": {
@@ -285,6 +285,8 @@
       "emailPlaceholder": "vous@exemple.com",
       "phoneLabel": "Téléphone",
       "phonePlaceholder": "6 12 34 56 78",
+      "optional": "Facultatif, pour vous joindre plus facilement.",
+      "phoneCountryLabel": "Code pays",
       "specialRequestsLabel": "Demandes particulières",
       "specialRequestsPlaceholder": "Indiquez les informations utiles avant la visite.",
       "termsLabel": "J'accepte les conditions de réservation et je comprends que la demande doit être confirmée.",

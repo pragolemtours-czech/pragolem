@@ -4,7 +4,7 @@
     "subtitle": "Discover Prague with passionate guides and explore the Old Town, Prague Castle, and the city's fascinating hidden stories. Join a group tour or enjoy a private tour tailored to your interests. Tours available in French and English, over 130 five-star Google reviews. Choose your tour and book your Prague experience!",
     "altImage": "Pragolem Logo",
     "meta": {
-      "title": "Discover Prague on a Walking Tour | Pragolem Tours",
+      "title": "Prague Walking Tours with Local Guides",
       "description": "Discover Prague with passionate local guides! Explore the Old Town, Prague Castle and private tours. 130+ 5-star Google reviews."
     },
     "hero": {
@@ -285,6 +285,7 @@
       "emailPlaceholder": "you@example.com",
       "phoneLabel": "Phone",
       "phonePlaceholder": "6 12 34 56 78",
+      "optional": "Optional, for easier contact.",
       "phoneCountryLabel": "Country code",
       "specialRequestsLabel": "Special requests",
       "specialRequestsPlaceholder": "Tell us anything we should know before the tour.",
